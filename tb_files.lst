@@ -6,4 +6,5 @@
 +incdir+./../exam_axis/tb/axis_vc
 +incdir+./../exam_axis/tb/axis_vc/axis_slave_vc
 +incdir+./../exam_axis/tb/axis_vc/axis_master_vc
+./../exam_axis/tb/axis_pkg.sv
 ./../exam_axis/tb/axis_tb_top.sv

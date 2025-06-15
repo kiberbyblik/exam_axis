@@ -1,7 +1,7 @@
 `ifndef AXI_STREAM_SLAVE_DRIVER
 `define AXI_STREAM_SLAVE_DRIVER
 
-import icon_pkg::*;
+import axis_pkg::*;
 
 class axi_stream_slave_driver;
 
