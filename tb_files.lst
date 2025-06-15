@@ -1,0 +1,9 @@
+./../exam_axis/dut/axis_reg.sv
+
++incdir+./../exam_axis/tb
++incdir+./../exam_axis/tb/clk_vc
++incdir+./../exam_axis/tb/rst_vc
++incdir+./../exam_axis/tb/axis_vc
++incdir+./../exam_axis/tb/axis_vc/axis_slave_vc
++incdir+./../exam_axis/tb/axis_vc/axis_master_vc
+./../exam_axis/tb/axis_tb_top.sv
