@@ -11,9 +11,9 @@ class axi_stream_slave_agent;
   axi_stream_slave_driver  driver;
   axi_stream_monitor monitor;
 
-  function new(virtual axi_stream_agent_if axi_stream_if, mailbox mon_outside, event first_hs);
+  function new(virtual axi_stream_agent_if axi_stream_if, mailbox mon_outside);
     driver  = new(axi_stream_if);
-    monitor = new(axi_stream_if, mon_outside, first_hs);
+    monitor = new(axi_stream_if, mon_outside, null);
   endfunction
 
   function void pre_main();

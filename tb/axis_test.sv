@@ -10,7 +10,7 @@ class axis_test;
   clk_transaction        clk_transaction;
   rst_transaction        rst_transaction;
 
-  function new(icon_env env);
+  function new(axis_env env);
     this.env = env;
   endfunction
 
@@ -26,8 +26,9 @@ class axis_test;
     env.rst_agent.to_driver.put(rst_transaction);
   endtask
 
-  task axis_transaction_put();
+  task axis_transaction_put(logic [`AXI_DATA_W -1:0] t_data[$]);
     axis_transaction = new();
+    axis_transaction.data = t_data;
     env.axis_master_agent.to_driver.put(axis_transaction);
   endtask
 
@@ -36,8 +37,8 @@ class axis_test;
     @(posedge env.vif.clk_if.clk);
   endtask
 
-  task init_axi();
-    axis_transaction_put(); //to random
+  task init_axi(logic [`AXI_DATA_W -1:0] t_data[$]);
+    axis_transaction_put(t_data);
     wait_axis_in_end_trans();
   endtask
 
@@ -55,12 +56,14 @@ class axis_test;
   endtask
 
   task base_test();  
-    clk_i_transaction_put(`CLOCK_PERIOD);
+    clk_transaction_put(`CLOCK_PERIOD);
     @(posedge env.vif.clk_if.clk);
     rst_transaction_put(50);
     $display ("here reset");  
-    repeat(10)
-        init_axi();
+    repeat(3)
+        init_axi(.t_data({1,2,3,4,5,6,7,8,9}));
   endtask
 
 endclass
+
+`endif //!AXIS_TEST

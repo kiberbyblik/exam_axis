@@ -6,7 +6,7 @@
 `include "axi_stream_master_agent.sv"
 `include "axi_stream_slave_agent.sv"
 
-class alu_matrix_env;
+class axis_env;
 
   // Agents instances
   clk_agent               clk_agent;
@@ -36,9 +36,6 @@ class alu_matrix_env;
     this.rst2scrb            = new();
     this.in2scrb             = new();
     this.out2scrb            = new();
-    this.apb2scrb            = new();
-    this.irq2scrb            = new();
-
     // Creating agents
     this.clk_agent           = new(vif.clk_if                         );
     this.rst_agent           = new(vif.rst_if,      rst2scrb          );
@@ -71,4 +68,4 @@ class alu_matrix_env;
 
 endclass
 
-`endif //!ALU_MATRIX_ENV
+`endif //!AXIS_ENV

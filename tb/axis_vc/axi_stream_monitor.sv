@@ -10,7 +10,6 @@ class axi_stream_monitor;
   axi_stream_transaction transaction;
 
   event first_hs;
-  event tlast;
 
   function new(virtual axi_stream_agent_if axi_stream_if, mailbox mon_outside, event first_hs);
     this.vif             = axi_stream_if;
@@ -24,12 +23,10 @@ class axi_stream_monitor;
       @(posedge vif.clk)
       if (vif.axis_valid && vif.axis_ready) begin
         transaction.data.push_back(vif.axis_data);
-        transaction.id = vif.axis_id;
         if (transaction.data.size() == 1) begin
           ->first_hs;
         end
         if (vif.axis_last) begin
-          ->tlast;
           break;
         end
       end

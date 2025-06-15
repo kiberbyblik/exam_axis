@@ -24,7 +24,6 @@ class axi_stream_master_driver;
         DRIVE_INITIAL:
           begin
             vif.axis_data  <= transaction.data[i];
-            vif.axis_id    <= transaction.id;
             vif.axis_valid <= 1;
             if (i == transaction.data.size()-1) begin
               vif.axis_last <= 1;
@@ -37,13 +36,11 @@ class axi_stream_master_driver;
               if (i < transaction.data.size()-1) begin
                 i++;
                 vif.axis_data  <= transaction.data[i];
-                vif.axis_id    <= transaction.id;
                 if (i == transaction.data.size()-1) begin
                   vif.axis_last <= 1;
                 end
               end else begin
                 vif.axis_data  <= 0;
-                vif.axis_id    <= 0;
                 vif.axis_valid <= 0;
                 vif.axis_last  <= 0;
                 break;
@@ -75,7 +72,6 @@ class axi_stream_master_driver;
         begin
           @(negedge vif.rst_n);
           vif.axis_data  <= 0;
-          vif.axis_id    <= 0;
           vif.axis_valid <= 0;
           vif.axis_last  <= 0;
         end

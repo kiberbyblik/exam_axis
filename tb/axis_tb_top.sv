@@ -39,4 +39,6 @@ module axis_tb_top;
     test.run();
   end
 
-endmodule : axis_tb_top
+endmodule
+
+`endif //!AXIS_TB_TOP
